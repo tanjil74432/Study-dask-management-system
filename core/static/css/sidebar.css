@@ -1,0 +1,691 @@
+/* ==========================================
+
+   StudySphere — Sidebar
+
+   ========================================== */
+
+.sp-sidebar{
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: var(--sidebar-width);
+
+    height: 100vh;
+
+    background: linear-gradient(180deg, #1e293b 0%, #172033 55%, #131c2e 100%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 22px 16px 18px;
+
+    border-right: 1px solid rgba(255,255,255,.06);
+
+    box-shadow: 4px 0 24px rgba(0,0,0,.18);
+
+    z-index: 1000;
+
+    overflow: hidden;
+
+}
+
+/* Soft glow accent at the top */
+
+.sp-sidebar::before{
+
+    content: "";
+
+    position: absolute;
+
+    top: -120px;
+
+    left: -60px;
+
+    width: 240px;
+
+    height: 240px;
+
+    background: radial-gradient(circle, rgba(56,189,248,.18), transparent 70%);
+
+    pointer-events: none;
+
+}
+
+/* ==========================================
+
+   Brand / Logo
+
+   ========================================== */
+
+.sp-brand{
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--text-white);
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    letter-spacing: .3px;
+
+    text-decoration: none;
+
+    padding: 4px 8px 18px;
+
+    margin-bottom: 14px;
+
+    border-bottom: 1px solid rgba(255,255,255,.07);
+
+    position: relative;
+
+    transition: var(--transition);
+
+}
+
+.sp-brand i{
+
+    font-size: 24px;
+
+    color: var(--accent-color);
+
+    filter: drop-shadow(0 0 10px rgba(56,189,248,.45));
+
+}
+
+.sp-brand:hover{
+
+    color: var(--accent-color);
+
+}
+
+/* ==========================================
+
+   Navigation
+
+   ========================================== */
+
+.sp-nav{
+
+    flex: 1 1 auto;
+
+    min-height: 0;
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    padding-right: 3px;
+
+}
+
+.sp-nav a{
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 11px 13px;
+
+    color: #94a3b8;
+
+    font-size: 14.5px;
+
+    font-weight: 500;
+
+    text-decoration: none;
+
+    border-radius: 11px;
+
+    transition: var(--transition);
+
+}
+
+.sp-nav a i{
+
+    font-size: 17px;
+
+    width: 22px;
+
+    text-align: center;
+
+    flex-shrink: 0;
+
+    transition: var(--transition);
+
+}
+
+.sp-nav a span{
+
+    white-space: nowrap;
+
+}
+
+.sp-nav a:hover{
+
+    background: rgba(255,255,255,.06);
+
+    color: #fff;
+
+}
+
+.sp-nav a:hover i{
+
+    color: var(--accent-color);
+
+    transform: scale(1.08);
+
+}
+
+/* ---------- Active item ---------- */
+
+.sp-nav a.active{
+
+    background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+
+    color: #fff;
+
+    font-weight: 600;
+
+    box-shadow: 0 6px 18px rgba(37,99,235,.38);
+
+}
+
+.sp-nav a.active i{
+
+    color: #fff;
+
+}
+
+.sp-nav a.active::before{
+
+    content: "";
+
+    position: absolute;
+
+    left: -16px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 4px;
+
+    height: 24px;
+
+    background: var(--accent-color);
+
+    border-radius: 0 4px 4px 0;
+
+    box-shadow: 0 0 12px rgba(56,189,248,.8);
+
+}
+
+/* ==========================================
+
+   Scrollbar (nav + sidebar)
+
+   ========================================== */
+
+.sp-nav::-webkit-scrollbar{
+
+    width: 4px;
+
+}
+
+.sp-nav::-webkit-scrollbar-thumb{
+
+    background: rgba(255,255,255,.14);
+
+    border-radius: 10px;
+
+}
+
+.sp-nav::-webkit-scrollbar-track{
+
+    background: transparent;
+
+}
+
+.sp-nav{
+
+    scrollbar-width: thin;
+
+    scrollbar-color: rgba(255,255,255,.14) transparent;
+
+}
+
+/* ==========================================
+
+   User Card (bottom)
+
+   ========================================== */
+
+.sp-user-card{
+
+    flex-shrink: 0;
+
+    margin-top: 14px;
+
+    padding: 14px 12px;
+
+    background: rgba(255,255,255,.045);
+
+    border: 1px solid rgba(255,255,255,.09);
+
+    border-radius: 14px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
+
+    box-shadow: 0 4px 18px rgba(0,0,0,.22);
+
+    transition: var(--transition);
+
+}
+
+.sp-user-card:hover{
+
+    background: rgba(255,255,255,.07);
+
+    border-color: rgba(255,255,255,.14);
+
+}
+
+/* ---------- Avatar ---------- */
+
+.sp-avatar-container{
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+.sp-avatar-circle{
+
+    width: 50px;
+
+    height: 50px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    color: #fff;
+
+    background: linear-gradient(135deg, #2563eb, #38bdf8);
+
+    box-shadow: 0 5px 16px rgba(37,99,235,.45);
+
+    transition: var(--transition);
+
+}
+
+.sp-user-card:hover .sp-avatar-circle{
+
+    transform: scale(1.06);
+
+}
+
+.sp-online-badge{
+
+    position: absolute;
+
+    bottom: 1px;
+
+    right: 1px;
+
+    width: 13px;
+
+    height: 13px;
+
+    background: var(--success-color);
+
+    border: 2.5px solid #172033;
+
+    border-radius: 50%;
+
+    box-shadow: 0 0 8px rgba(34,197,94,.6);
+
+}
+
+/* ---------- Info ---------- */
+
+.sp-user-info{
+
+    text-align: center;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 3px;
+
+    width: 100%;
+
+}
+
+.sp-username{
+
+    margin: 0;
+
+    max-width: 100%;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    color: #fff;
+
+    font-size: 14.5px;
+
+    font-weight: 600;
+
+    letter-spacing: .2px;
+
+}
+
+.sp-status-text{
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    color: var(--success-color);
+
+}
+
+.sp-status-indicator{
+
+    width: 6px;
+
+    height: 6px;
+
+    background: var(--success-color);
+
+    border-radius: 50%;
+
+    box-shadow: 0 0 5px rgba(34,197,94,.7);
+
+}
+
+/* ---------- Buttons ---------- */
+
+.sp-user-buttons{
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 7px;
+
+    width: 100%;
+
+}
+
+.sp-user-buttons form{
+
+    grid-column: 1 / -1;
+
+    margin: 0;
+
+}
+
+.sp-profile-btn,
+
+.sp-settings-btn,
+
+.sp-logout-btn{
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    width: 100%;
+
+    padding: 9px 8px;
+
+    border-radius: 9px;
+
+    font-size: 12.5px;
+
+    font-weight: 600;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: var(--transition);
+
+}
+
+.sp-profile-btn i,
+
+.sp-settings-btn i,
+
+.sp-logout-btn i{
+
+    font-size: 14px;
+
+}
+
+.sp-profile-btn{
+
+    background: rgba(37,99,235,.20);
+
+    border: 1px solid rgba(37,99,235,.34);
+
+}
+
+.sp-profile-btn:hover{
+
+    background: rgba(37,99,235,.34);
+
+    border-color: rgba(37,99,235,.55);
+
+    transform: translateY(-2px);
+
+    color: #fff;
+
+}
+
+.sp-settings-btn{
+
+    background: rgba(148,163,184,.18);
+
+    border: 1px solid rgba(148,163,184,.30);
+
+}
+
+.sp-settings-btn:hover{
+
+    background: rgba(148,163,184,.30);
+
+    border-color: rgba(148,163,184,.48);
+
+    transform: translateY(-2px);
+
+    color: #fff;
+
+}
+
+.sp-logout-btn{
+
+    background: rgba(239,68,68,.18);
+
+    border: 1px solid rgba(239,68,68,.32);
+
+}
+
+.sp-logout-btn:hover{
+
+    background: rgba(239,68,68,.30);
+
+    border-color: rgba(239,68,68,.52);
+
+    transform: translateY(-2px);
+
+}
+
+.sp-profile-btn:active,
+
+.sp-settings-btn:active,
+
+.sp-logout-btn:active{
+
+    transform: translateY(0);
+
+}
+
+/* ==========================================
+
+   Short screens — keep everything visible
+
+   ========================================== */
+
+@media (max-height: 780px){
+
+    .sp-brand{
+
+        font-size: 19px;
+
+        padding-bottom: 14px;
+
+        margin-bottom: 10px;
+
+    }
+
+    .sp-nav a{
+
+        padding: 9px 12px;
+
+        font-size: 14px;
+
+    }
+
+    .sp-user-card{
+
+        padding: 11px 10px;
+
+        gap: 8px;
+
+    }
+
+    .sp-avatar-circle{
+
+        width: 42px;
+
+        height: 42px;
+
+        font-size: 18px;
+
+    }
+
+    .sp-username{
+
+        font-size: 13.5px;
+
+    }
+
+}
+
+/* ==========================================
+
+   Collapsed sidebar (tablet)
+
+   ========================================== */
+
+@media (max-width: 992px){
+
+    .sp-nav a{
+
+        justify-content: center;
+
+        padding: 11px 8px;
+
+    }
+
+    .sp-nav a.active::before{
+
+        display: none;
+
+    }
+
+    .sp-user-buttons{
+
+        grid-template-columns: 1fr;
+
+    }
+ 
+    .sp-profile-btn span,
+
+    .sp-settings-btn span,
+
+    .sp-logout-btn span{
+
+        display: none;
+
+    }
+
+    .sp-username{
+
+        font-size: 12px;
+
+    }
+
+}

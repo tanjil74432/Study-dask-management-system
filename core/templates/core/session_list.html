@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% block title %}Study Sessions{% endblock %}
+{% block content %}
+<div class="page-header">
+    <h2>Study Sessions</h2>
+    <p>A log of every study session you've completed.</p>
+</div>
+<a href="{% url 'session_add' %}" class="btn btn-primary mb-3">+ Add Study Session</a>
+<div class="sp-table-card">
+<table class="table">
+    <thead><tr><th>Subject</th><th>Start</th><th>End</th><th>Duration (min)</th><th>Actions</th></tr></thead>
+    <tbody>
+    {% for session in sessions %}
+        <tr>
+            <td>{{ session.subject.subject_name }}</td>
+            <td>{{ session.start_time }}</td>
+            <td>{{ session.end_time }}</td>
+            <td>{{ session.duration_minutes }}</td>
+            <td>
+                <a href="{% url 'session_edit' session.pk %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                <a href="{% url 'session_delete' session.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="5" class="text-muted">No study sessions yet — add one above.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

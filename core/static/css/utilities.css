@@ -1,0 +1,362 @@
+/* ==========================================
+   Utilities
+   Smart Study Planner
+   ========================================== */
+
+/* ========= Display ========= */
+
+.d-flex-center{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.d-flex-between{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.d-flex-around{
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+}
+
+.d-flex-column{
+    display:flex;
+    flex-direction:column;
+}
+
+.flex-wrap{
+    flex-wrap:wrap;
+}
+
+.gap-10{
+    gap:10px;
+}
+
+.gap-15{
+    gap:15px;
+}
+
+.gap-20{
+    gap:20px;
+}
+
+/* ========= Width ========= */
+
+.w-100{
+    width:100%;
+}
+
+.w-75{
+    width:75%;
+}
+
+.w-50{
+    width:50%;
+}
+
+.w-auto{
+    width:auto;
+}
+
+/* ========= Height ========= */
+
+.h-100{
+    height:100%;
+}
+
+.min-vh-100{
+    min-height:100vh;
+}
+
+/* ========= Margin ========= */
+
+.mt-5{margin-top:5px;}
+.mt-10{margin-top:10px;}
+.mt-15{margin-top:15px;}
+.mt-20{margin-top:20px;}
+.mt-30{margin-top:30px;}
+.mt-40{margin-top:40px;}
+
+.mb-5{margin-bottom:5px;}
+.mb-10{margin-bottom:10px;}
+.mb-15{margin-bottom:15px;}
+.mb-20{margin-bottom:20px;}
+.mb-30{margin-bottom:30px;}
+.mb-40{margin-bottom:40px;}
+
+.ml-10{margin-left:10px;}
+.ml-20{margin-left:20px;}
+
+.mr-10{margin-right:10px;}
+.mr-20{margin-right:20px;}
+
+/* ========= Padding ========= */
+
+.p-10{padding:10px;}
+.p-15{padding:15px;}
+.p-20{padding:20px;}
+.p-25{padding:25px;}
+.p-30{padding:30px;}
+
+.pt-20{padding-top:20px;}
+.pb-20{padding-bottom:20px;}
+.pl-20{padding-left:20px;}
+.pr-20{padding-right:20px;}
+
+/* ========= Text ========= */
+
+.text-center{
+    text-align:center;
+}
+
+.text-left{
+    text-align:left;
+}
+
+.text-right{
+    text-align:right;
+}
+
+.text-primary{
+    color:var(--primary-color);
+}
+
+.text-success{
+    color:var(--success-color);
+}
+
+.text-danger{
+    color:var(--danger-color);
+}
+
+.text-warning{
+    color:var(--warning-color);
+}
+
+.text-muted{
+    color:var(--text-light);
+}
+
+.text-white{
+    color:#fff;
+}
+
+/* ========= Font ========= */
+
+.fw-400{
+    font-weight:400;
+}
+
+.fw-500{
+    font-weight:500;
+}
+
+.fw-600{
+    font-weight:600;
+}
+
+.fw-700{
+    font-weight:700;
+}
+
+.fs-12{
+    font-size:12px;
+}
+
+.fs-14{
+    font-size:14px;
+}
+
+.fs-16{
+    font-size:16px;
+}
+
+.fs-18{
+    font-size:18px;
+}
+
+.fs-22{
+    font-size:22px;
+}
+
+.fs-28{
+    font-size:28px;
+}
+
+.fs-36{
+    font-size:36px;
+}
+
+/* ========= Radius ========= */
+
+.rounded-sm{
+    border-radius:8px;
+}
+
+.rounded{
+    border-radius:12px;
+}
+
+.rounded-lg{
+    border-radius:20px;
+}
+
+.rounded-xl{
+    border-radius:30px;
+}
+
+.circle{
+    border-radius:50%;
+}
+
+/* ========= Shadow ========= */
+
+.shadow-soft{
+    box-shadow:var(--shadow-sm);
+}
+
+.shadow-medium{
+    box-shadow:var(--shadow-md);
+}
+
+.shadow-large{
+    box-shadow:var(--shadow-lg);
+}
+
+/* ========= Border ========= */
+
+.border{
+    border:1px solid var(--border-color);
+}
+
+.border-top{
+    border-top:1px solid var(--border-color);
+}
+
+.border-bottom{
+    border-bottom:1px solid var(--border-color);
+}
+
+/* ========= Background ========= */
+
+.bg-white{
+    background:#fff;
+}
+
+.bg-primary{
+    background:var(--primary-color);
+}
+
+.bg-success{
+    background:var(--success-color);
+}
+
+.bg-warning{
+    background:var(--warning-color);
+}
+
+.bg-danger{
+    background:var(--danger-color);
+}
+
+.bg-light{
+    background:var(--bg-color);
+}
+
+/* ========= Glass ========= */
+
+.glass{
+
+    background:rgba(255,255,255,.70);
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,.35);
+
+}
+
+/* ========= Gradient ========= */
+
+.gradient-primary{
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #38bdf8
+    );
+
+    color:white;
+
+}
+
+.gradient-success{
+
+    background:linear-gradient(
+        135deg,
+        #22c55e,
+        #4ade80
+    );
+
+    color:white;
+
+}
+
+.gradient-warning{
+
+    background:linear-gradient(
+        135deg,
+        #f59e0b,
+        #fbbf24
+    );
+
+    color:white;
+
+}
+
+.gradient-danger{
+
+    background:linear-gradient(
+        135deg,
+        #ef4444,
+        #fb7185
+    );
+
+    color:white;
+
+}
+
+/* ========= Cursor ========= */
+
+.pointer{
+    cursor:pointer;
+}
+
+/* ========= Overflow ========= */
+
+.overflow-hidden{
+    overflow:hidden;
+}
+
+/* ========= Position ========= */
+
+.relative{
+    position:relative;
+}
+
+.absolute{
+    position:absolute;
+}
+
+/* ========= Visibility ========= */
+
+.hidden{
+    display:none;
+}
+
+.visible{
+    display:block;
+}

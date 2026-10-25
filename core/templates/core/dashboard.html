@@ -1,0 +1,367 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="db">
+
+    <!-- ========== Header ========== -->
+
+    <div class="db-head">
+
+        <div>
+
+            <p class="db-eyebrow">{% now "l, j F Y" %}</p>
+
+            <h1 class="db-title">Welcome back, {{ request.user.username }}</h1>
+
+        </div>
+
+        {% if today_minutes%}
+
+        <div class="db-head-note db-head-note-active">
+
+            <i class="bi bi-check-circle-fill"></i>
+
+            <span>{{ today_time_label }}studied today</span>
+
+        </div>
+
+        {% else %}
+
+        <div class="db-head-note">
+
+            <i class="bi bi-lightning-charge-fill"></i>
+
+            <span>Nothing logged yet today</span>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <!-- ========== Stats ========== -->
+
+    <div class="db-stats">
+
+        <div class="db-stat">
+
+            <span class="db-stat-icon db-stat-icon-blue"><i class="bi bi-book-fill"></i></span>
+
+            <div>
+
+                <div class="db-stat-value">{{ total_subjects }}</div>
+
+                <div class="db-stat-label">Subjects</div>
+
+            </div>
+
+        </div>
+
+        <div class="db-stat">
+
+            <span class="db-stat-icon db-stat-icon-violet"><i class="bi bi-bullseye"></i></span>
+
+            <div>
+
+                <div class="db-stat-value">{{ total_goals }}</div>
+
+                <div class="db-stat-label">Goals</div>
+
+            </div>
+
+        </div>
+
+        <div class="db-stat">
+
+            <span class="db-stat-icon db-stat-icon-green"><i class="bi bi-clock-history"></i></span>
+
+            <div>
+
+                <div class="db-stat-value">{{ total_time_label }}<small>h</small></div>
+
+                <div class="db-stat-label">Total studied</div>
+
+            </div>
+
+        </div>
+
+        <div class="db-stat">
+
+            <span class="db-stat-icon db-stat-icon-amber"><i class="bi bi-calendar-check-fill"></i></span>
+
+            <div>
+
+                <div class="db-stat-value">{{ today_time_lable }}<small>h</small></div>
+
+                <div class="db-stat-label">Today</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ========== Main grid ========== -->
+
+    <div class="db-grid">
+
+        <!-- ---------- Left column ---------- -->
+
+        <div class="db-col">
+
+            <!-- Study Timer -->
+
+            <div class="db-card">
+
+                <div class="db-card-head">
+
+                    <h4><i class="bi bi-stopwatch-fill"></i> Study Timer</h4>
+
+                    <span class="db-card-hint">Pick a subject and start the clock</span>
+
+                </div>
+
+                <div class="db-timer-list">
+
+                    {% for item in subject_data %}
+
+                    <div class="db-timer-row {% if item.active_session %}db-timer-row-live{% endif %}">
+
+                        <div class="db-timer-info">
+
+                            <span class="db-timer-dot"></span>
+
+                            <span class="db-timer-name">{{ item.subject.subject_name }}</span>
+
+                        </div>
+
+                        {% if item.active_session %}
+
+                            <div class="db-timer-clock timer-live"
+
+                                 data-start="{{ item.active_session.start_time|date:'U' }}000">00:00:00</div>
+
+                            <form method="post" action="{% url 'session_stop' item.active_session.pk %}">
+
+                                {% csrf_token %}
+
+                                <button type="submit" class="db-btn db-btn-stop">
+
+                                    <i class="bi bi-stop-fill"></i> Stop
+
+                                </button>
+
+                            </form>
+
+                        {% else %}
+
+                            <span class="db-timer-meta">{{ item.total_label }}</span>
+
+                            <form method="post" action="{% url 'session_start' item.subject.pk %}">
+
+                                {% csrf_token %}
+
+                                <button type="submit" class="db-btn db-btn-start">
+
+                                    <i class="bi bi-play-fill"></i> Start
+
+                                </button>
+
+                            </form>
+
+                        {% endif %}
+
+                    </div>
+
+                    {% empty %}
+
+                    <div class="db-empty">
+
+                        <i class="bi bi-book"></i>
+
+                        <p>No subjects yet.</p>
+
+                        <a href="{% url 'subject_add' %}" class="db-btn db-btn-start">Add your first subject</a>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+            <!-- Recent sessions -->
+
+            <div class="db-card">
+
+                <div class="db-card-head">
+
+                    <h4><i class="bi bi-clock-history"></i> Recent Sessions</h4>
+
+                    <a href="{% url 'session_list' %}" class="db-card-link">View all</a>
+
+                </div>
+
+                <div class="db-table-wrap">
+
+                    <table class="db-table">
+
+                        <thead>
+
+                            <tr><th>Subject</th><th>Started</th><th class="db-right">Duration</th></tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {% for session in recent_sessions %}
+
+                            <tr>
+
+                                <td class="db-strong">{{ session.subject.subject_name }}</td>
+
+                                <td class="db-muted">{{ session.start_time|date:"j M, g:i A" }}</td>
+
+                                <td class="db-right">
+
+                                    {% if session.duration_minutes %}
+
+                                        <span class="db-pill">{{ session.duration_minutes }} min</span>
+
+                                    {% else %}
+
+                                        <span class="db-pill db-pill-live">running</span>
+
+                                    {% endif %}
+
+                                </td>
+
+                            </tr>
+
+                            {% empty %}
+
+                            <tr><td colspan="3" class="db-muted db-center">No sessions logged yet.</td></tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ---------- Right column ---------- -->
+
+        <div class="db-col">
+
+            <!-- Time by subject -->
+
+            <div class="db-card">
+
+                <div class="db-card-head">
+
+                    <h4><i class="bi bi-bar-chart-fill"></i> Time by Subject</h4>
+
+                </div>
+
+                <div class="db-bars">
+
+                    {% for item in time_breakdown %}
+
+                    <div class="db-bar-row">
+
+                        <div class="db-bar-head">
+
+                            <span class="db-bar-name">{{ item.subject.subject_name }}</span>
+
+                            <span class="db-bar-total">{{ item.total_label }}</span>
+
+                        </div>
+
+                        <div class="db-bar-track">
+
+                            <div class="db-bar-fill" style="width: {{ item.percent }}%"></div>
+
+                        </div>
+
+                        <div class="db-bar-foot">Today: {{ item.today_label }}</div>
+
+                    </div>
+
+                    {% empty %}
+
+                    <p class="db-muted db-small">No study time recorded yet.</p>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+            <!-- Quick actions -->
+
+            <div class="db-card">
+
+                <div class="db-card-head">
+
+                    <h4><i class="bi bi-lightning-charge-fill"></i> Quick Actions</h4>
+
+                </div>
+
+                <div class="db-actions">
+
+                    <a href="{% url 'subject_add' %}" class="db-action">
+
+                        <i class="bi bi-book-fill"></i><span>Subject</span>
+
+                    </a>
+
+                    <a href="{% url 'goal_add' %}" class="db-action">
+
+                        <i class="bi bi-bullseye"></i><span>Goal</span>
+
+                    </a>
+
+                    <a href="{% url 'note_add' %}" class="db-action">
+
+                        <i class="bi bi-journal-richtext"></i><span>Note</span>
+
+                    </a>
+
+                    <a href="{% url 'resource_add' %}" class="db-action">
+
+                        <i class="bi bi-file-earmark-pdf-fill"></i><span>Resource</span>
+
+                    </a>
+
+                    <a href="{% url 'reminder_add' %}" class="db-action">
+
+                        <i class="bi bi-bell-fill"></i><span>Reminder</span>
+
+                    </a>
+
+                    <a href="{% url 'session_add' %}" class="db-action">
+
+                        <i class="bi bi-stopwatch-fill"></i><span>Session</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

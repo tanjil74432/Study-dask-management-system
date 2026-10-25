@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% block title %}Goals{% endblock %}
+{% block content %}
+<div class="page-header">
+    <h2>Goals</h2>
+    <p>Track what you're working toward, subject by subject.</p>
+</div>
+<a href="{% url 'goal_add' %}" class="btn btn-primary mb-3">+ Add Goal</a>
+<div class="sp-table-card">
+<table class="table">
+    <thead><tr><th>Title</th><th>Subject</th><th>Deadline</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody>
+    {% for goal in goals %}
+        <tr>
+            <td>{{ goal.goal_title }}</td>
+            <td>{{ goal.subject.subject_name }}</td>
+            <td>{{ goal.deadline }}</td>
+            <td><span class="badge badge-{{ goal.status }}">{{ goal.get_status_display }}</span></td>
+            <td>
+                <a href="{% url 'goal_edit' goal.pk %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                <a href="{% url 'goal_delete' goal.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="5" class="text-muted">No goals yet — add one above.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

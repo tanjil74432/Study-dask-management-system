@@ -1,0 +1,63 @@
+/* ==========================================
+   Study Planner - Design Variables
+   ========================================== */
+
+:root {
+
+    /* ========== Primary Colors ========== */
+
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+
+    --secondary-color: #1e293b;
+    --accent-color: #38bdf8;
+
+    /* ========== Status Colors ========== */
+
+    --success-color: #22c55e;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --info-color: #0ea5e9;
+
+    /* ========== Background Colors ========== */
+
+    --bg-color: #f8fafc;
+    --card-color: #ffffff;
+    --sidebar-color: #ffffff;
+
+    /* ========== Text Colors ========== */
+
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --text-white: #ffffff;
+
+    /* ========== Border ========== */
+
+    --border-color: #e2e8f0;
+
+    /* ========== Shadow ========== */
+
+    --shadow-sm: 0 2px 8px rgba(0,0,0,.05);
+    --shadow-md: 0 8px 25px rgba(0,0,0,.08);
+    --shadow-lg: 0 15px 40px rgba(0,0,0,.12);
+
+    /* ========== Border Radius ========== */
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    /* ========== Transition ========== */
+
+    --transition: all .3s ease;
+
+    /* ========== Font ========== */
+
+    --font-family: "Poppins", sans-serif;
+
+    /* ========== Layout ========== */
+
+    --navbar-height: 70px;
+    --sidebar-width: 250px;
+
+}

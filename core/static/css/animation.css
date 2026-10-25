@@ -1,0 +1,385 @@
+/* ==========================================
+   Study Planner
+   Animation
+   ========================================== */
+
+/* ---------- Global Transition ---------- */
+
+*{
+    transition:
+        background-color .30s ease,
+        color .30s ease,
+        border-color .30s ease,
+        box-shadow .30s ease,
+        transform .30s ease;
+}
+
+/* ---------- Page Fade ---------- */
+
+body{
+
+    animation:pageFade .6s ease;
+
+}
+
+@keyframes pageFade{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/* ---------- Fade Up ---------- */
+
+.fade-up{
+
+    animation:fadeUp .6s ease forwards;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ---------- Fade Left ---------- */
+
+.fade-left{
+
+    animation:fadeLeft .5s ease forwards;
+
+}
+
+@keyframes fadeLeft{
+
+    from{
+
+        opacity:0;
+        transform:translateX(-30px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateX(0);
+
+    }
+
+}
+
+/* ---------- Fade Right ---------- */
+
+.fade-right{
+
+    animation:fadeRight .5s ease forwards;
+
+}
+
+@keyframes fadeRight{
+
+    from{
+
+        opacity:0;
+        transform:translateX(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateX(0);
+
+    }
+
+}
+
+/* ---------- Scale ---------- */
+
+.scale-in{
+
+    animation:scaleIn .4s ease;
+
+}
+
+@keyframes scaleIn{
+
+    from{
+
+        opacity:0;
+        transform:scale(.92);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:scale(1);
+
+    }
+
+}
+
+/* ---------- Cards ---------- */
+
+.sp-card{
+
+    transition:all .35s ease;
+
+}
+
+.sp-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+/* ---------- Sidebar ---------- */
+
+.sp-nav a{
+
+    transition:all .25s ease;
+
+}
+
+.sp-nav a:hover{
+
+    transform:translateX(6px);
+
+}
+
+/* ---------- Buttons ---------- */
+
+.btn{
+
+    transition:all .25s ease;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.btn:active{
+
+    transform:scale(.96);
+
+}
+
+/* ---------- Table ---------- */
+
+.table tbody tr{
+
+    transition:all .25s ease;
+
+}
+
+.table tbody tr:hover{
+
+    transform:scale(1.01);
+
+}
+
+/* ---------- Inputs ---------- */
+
+.form-control,
+.form-select{
+
+    transition:all .25s ease;
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    transform:translateY(-1px);
+
+}
+
+/* ---------- Icons ---------- */
+
+i{
+
+    transition:transform .25s ease;
+
+}
+
+.btn:hover i{
+
+    transform:rotate(-10deg);
+
+}
+
+/* ---------- Logo ---------- */
+
+.sp-brand{
+
+    transition:all .35s ease;
+
+}
+
+.sp-brand:hover{
+
+    letter-spacing:1px;
+
+}
+
+/* ---------- Alert ---------- */
+
+.alert{
+
+    animation:slideDown .45s ease;
+
+}
+
+@keyframes slideDown{
+
+    from{
+
+        opacity:0;
+        transform:translateY(-20px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ---------- Floating ---------- */
+
+.float{
+
+    animation:floating 3s ease-in-out infinite;
+
+}
+
+@keyframes floating{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-6px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ---------- Pulse ---------- */
+
+.pulse{
+
+    animation:pulse 2s infinite;
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.04);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ---------- Loading ---------- */
+
+.loading{
+
+    animation:loading 1s linear infinite;
+
+}
+
+@keyframes loading{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* ---------- Dashboard Card Delay ---------- */
+
+.sp-card:nth-child(1){
+
+    animation:fadeUp .4s ease;
+
+}
+
+.sp-card:nth-child(2){
+
+    animation:fadeUp .55s ease;
+
+}
+
+.sp-card:nth-child(3){
+
+    animation:fadeUp .70s ease;
+
+}
+
+.sp-card:nth-child(4){
+
+    animation:fadeUp .85s ease;
+
+}

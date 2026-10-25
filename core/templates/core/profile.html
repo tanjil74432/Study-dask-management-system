@@ -1,0 +1,213 @@
+{% extends 'core/base.html' %}
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header mb-4">
+        <h2>
+            <i class="bi bi-person-circle"></i>
+            My Profile
+        </h2>
+        <p class="text-muted">
+            Manage your personal information.
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        <!-- Left Profile Card -->
+        <div class="col-lg-4">
+
+            <div class="sp-form-card text-center h-100">
+
+                {% if form.instance.photo %}
+
+                    <img src="{{ form.instance.photo.url }}"
+                         class="rounded-circle shadow mb-3"
+                         style="width:150px;height:150px;object-fit:cover;">
+
+                {% else %}
+
+                    <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center shadow mb-3"
+                         style="width:150px;height:150px;font-size:55px;font-weight:700;">
+
+                        {{ request.user.username|first|upper }}
+
+                    </div>
+
+                {% endif %}
+
+                <h4 class="mb-1">
+
+                    {% if form.instance.full_name %}
+                        {{ form.instance.full_name }}
+                    {% else %}
+                        {{ request.user.username }}
+                    {% endif %}
+
+                </h4>
+
+                <p class="text-muted mb-2">
+
+                    @{{ request.user.username }}
+
+                </p>
+
+                <span class="badge bg-primary px-3 py-2">
+
+                    Student
+
+                </span>
+
+                <hr>
+
+                <p class="text-muted mb-0">
+
+                    Welcome to StudySphere.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Right Edit Form -->
+        <div class="col-lg-8">
+
+            <div class="sp-form-card">
+
+                <h4 class="mb-4">
+
+                    <i class="bi bi-pencil-square"></i>
+
+                    Edit Profile
+
+                </h4>
+
+                <form method="POST" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Profile Picture
+
+                        </label>
+
+                        {{ form.photo }}
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Full Name
+
+                        </label>
+
+                        {{ form.full_name }}
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Username
+
+                        </label>
+
+                        {{ form.username }}
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Bio
+
+                        </label>
+
+                        {{ form.bio }}
+
+                    </div>
+
+                    <div class="d-flex gap-2 mt-4">
+
+                        <button type="submit"
+                                class="btn btn-primary">
+
+                            <i class="bi bi-check-circle"></i>
+
+                            Save Changes
+
+                        </button>
+
+                        <a href="{% url 'dashboard' %}"
+                           class="btn btn-secondary">
+
+                            Cancel
+
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <!-- Account Settings -->
+
+            <div class="sp-form-card mt-4">
+
+                <div class="d-flex justify-content-between align-items-center flex-wrap">
+
+                    <div>
+
+                        <h4>
+
+                            <i class="bi bi-gear-fill"></i>
+
+                            Account Settings
+
+                        </h4>
+
+                        <p class="text-muted mb-0">
+
+                            Change your email address and password.
+
+                        </p>
+
+                    </div>
+
+                    <div>
+
+                        <a href="{% url 'settings' %}"
+                           class="btn btn-outline-primary">
+
+                            <i class="bi bi-arrow-right-circle"></i>
+
+                            Open Settings
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

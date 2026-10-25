@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% block title %}Reminders{% endblock %}
+{% block content %}
+<div class="page-header">
+    <h2>Reminders</h2>
+    <p>Upcoming nudges tied to your goals.</p>
+</div>
+<a href="{% url 'reminder_add' %}" class="btn btn-primary mb-3">+ Add Reminder</a>
+<div class="sp-table-card">
+<table class="table">
+    <thead><tr><th>Message</th><th>Goal</th><th>Remind Time</th><th>Done</th><th>Actions</th></tr></thead>
+    <tbody>
+    {% for reminder in reminders %}
+        <tr>
+            <td>{{ reminder.message }}</td>
+            <td>{{ reminder.goal.goal_title }}</td>
+            <td>{{ reminder.remind_time }}</td>
+            <td>{% if reminder.is_done %}Yes{% else %}No{% endif %}</td>
+            <td>
+                <a href="{% url 'reminder_edit' reminder.pk %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                <a href="{% url 'reminder_delete' reminder.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="5" class="text-muted">No reminders yet — add one above.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

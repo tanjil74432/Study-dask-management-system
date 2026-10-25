@@ -1,0 +1,113 @@
+{% extends 'core/base.html' %}
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2>
+                <i class="bi bi-gear-fill"></i>
+                Account Settings
+            </h2>
+
+            <p class="text-muted mb-0">
+                Manage your account security and email.
+            </p>
+
+        </div>
+
+        <a href="{% url 'profile' %}" class="btn btn-outline-secondary">
+
+            <i class="bi bi-arrow-left"></i>
+
+            Back to Profile
+
+        </a>
+
+    </div>
+
+    <div class="row g-4">
+
+        <!-- Email -->
+
+        <div class="col-lg-6">
+
+            <div class="sp-form-card h-100">
+
+                <h4 class="mb-4">
+
+                    <i class="bi bi-envelope-fill text-primary"></i>
+
+                    Change Email
+
+                </h4>
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+                    {{ email_form.as_p }}
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary mt-2">
+
+                        <i class="bi bi-check-circle"></i>
+
+                        Update Email
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <!-- Password -->
+
+        <div class="col-lg-6">
+
+            <div class="sp-form-card h-100">
+
+                <h4 class="mb-3">
+
+                    <i class="bi bi-shield-lock-fill text-warning"></i>
+
+                    Password & Security
+
+                </h4>
+
+                <p class="text-muted">
+
+                    Keep your account secure by updating your password regularly.
+
+                </p>
+
+                <div class="mt-4">
+
+                    <a href="{% url 'password_change' %}"
+                       class="btn btn-warning">
+
+                        <i class="bi bi-key-fill"></i>
+
+                        Change Password
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

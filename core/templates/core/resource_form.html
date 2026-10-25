@@ -1,0 +1,172 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+
+    <h2>
+        <i class="bi bi-file-earmark-pdf-fill"></i>
+        {{ title }}
+    </h2>
+
+    <p>
+        Add a PDF, YouTube video or GitHub repository for your study.
+    </p>
+
+</div>
+
+<div class="sp-form-card">
+
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <!-- Subject -->
+
+        <div class="mb-3">
+
+            <label class="form-label">
+
+                Subject
+
+            </label>
+
+            {{ form.subject }}
+
+            {% if form.subject.errors %}
+                <div class="text-danger mt-1">
+                    {{ form.subject.errors }}
+                </div>
+            {% endif %}
+
+        </div>
+
+        <!-- Resource Type -->
+
+        <div class="mb-3">
+
+            <label class="form-label">
+
+                Resource Type
+
+            </label>
+
+            {{ form.type }}
+
+            {% if form.type.errors %}
+                <div class="text-danger mt-1">
+                    {{ form.type.errors }}
+                </div>
+            {% endif %}
+
+        </div>
+
+        <!-- Title -->
+
+        <div class="mb-3">
+
+            <label class="form-label">
+
+                Title
+
+            </label>
+
+            {{ form.title }}
+
+            {% if form.title.errors %}
+                <div class="text-danger mt-1">
+                    {{ form.title.errors }}
+                </div>
+            {% endif %}
+
+        </div>
+
+        <!-- Link -->
+
+        <div class="mb-3">
+
+            <label class="form-label">
+
+                Link
+
+            </label>
+
+            {{ form.link }}
+
+            <small class="text-muted">
+
+                Required for YouTube, GitHub and Other resources.
+
+            </small>
+
+            {% if form.link.errors %}
+                <div class="text-danger mt-1">
+                    {{ form.link.errors }}
+                </div>
+            {% endif %}
+
+        </div>
+
+        <!-- PDF Upload -->
+
+        <div class="mb-4">
+
+            <label class="form-label">
+
+                Upload PDF
+
+            </label>
+
+            {{ form.file }}
+
+            <small class="text-muted">
+
+                Upload only when Resource Type is PDF.
+
+            </small>
+
+            {% if form.file.errors %}
+                <div class="text-danger mt-1">
+                    {{ form.file.errors }}
+                </div>
+            {% endif %}
+
+        </div>
+
+        <!-- Buttons -->
+
+        <div class="d-flex gap-3">
+
+            <button type="submit" class="btn btn-primary">
+
+                <i class="bi bi-floppy-fill"></i>
+
+                Save Resource
+
+            </button>
+
+            <a href="{% url 'resource_list' %}" class="btn btn-outline-secondary">
+
+                <i class="bi bi-x-circle"></i>
+
+                Cancel
+
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

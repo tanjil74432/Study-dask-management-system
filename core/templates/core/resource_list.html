@@ -1,0 +1,167 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Resources{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <h2>
+        <i class="bi bi-folder2-open"></i>
+        Resources
+    </h2>
+
+    <p>
+        PDFs, videos, and repositories linked to your subjects.
+    </p>
+</div>
+
+<!-- Add Resource Button -->
+<div class="mb-4">
+    <a href="{% url 'resource_add' %}" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i>
+        Add Resource
+    </a>
+</div>
+
+
+<!-- Resources Table -->
+<div class="sp-table-card">
+
+    <div class="table-responsive">
+
+        <table class="table align-middle">
+
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Subject</th>
+                    <th>Type</th>
+                    <th>Open</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            {% for resource in resources %}
+
+                <tr>
+
+                    <!-- Title -->
+                    <td>
+                        <strong>
+                            {{ resource.title|default:"Untitled Resource" }}
+                        </strong>
+                    </td>
+
+
+                    <!-- Subject -->
+                    <td>
+                        {{ resource.subject.subject_name }}
+                    </td>
+
+
+                    <!-- Type -->
+                    <td>
+
+                        <span class="badge badge-{{ resource.type }}">
+                            {{ resource.get_type_display }}
+                        </span>
+
+                    </td>
+
+
+                    <!-- Open -->
+                    <td>
+
+                        {% if resource.file %}
+
+                            <!-- PDF -->
+                            <a href="{% url 'resource_open_pdf' resource.pk %}"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="btn btn-sm btn-outline-secondary">
+
+                                <i class="bi bi-file-earmark-pdf"></i>
+                                View PDF
+
+                            </a>
+
+                        {% elif resource.link %}
+
+                            <!-- External Link -->
+                            <a href="{{ resource.link }}"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="btn btn-sm btn-outline-secondary">
+
+                                <i class="bi bi-box-arrow-up-right"></i>
+                                Open
+
+                            </a>
+
+                        {% else %}
+
+                            <span class="text-muted">
+                                No file/link
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- Actions -->
+                    <td>
+
+                        <div class="d-flex gap-2">
+
+                            <a href="{% url 'resource_edit' resource.pk %}"
+                               class="btn btn-sm btn-outline-secondary">
+
+                                <i class="bi bi-pencil"></i>
+                                Edit
+
+                            </a>
+
+
+                            <a href="{% url 'resource_delete' resource.pk %}"
+                               class="btn btn-sm btn-outline-danger">
+
+                                <i class="bi bi-trash"></i>
+                                Delete
+
+                            </a>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            {% empty %}
+
+                <tr>
+
+                    <td colspan="5"
+                        class="text-muted text-center py-4">
+
+                        <i class="bi bi-folder-x fs-4 d-block mb-2"></i>
+
+                        No resources yet — add one above.
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

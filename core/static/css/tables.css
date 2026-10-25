@@ -1,0 +1,314 @@
+/* ==========================================
+   Tables
+   Smart Study Planner
+   ========================================== */
+
+/* ---------- Table Container ---------- */
+
+.sp-table-card{
+
+    background:#ffffff;
+
+    border:1px solid var(--border-color);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+/* ---------- Table ---------- */
+
+.table{
+
+    margin:0;
+
+    background:#ffffff;
+
+}
+
+/* ---------- Header ---------- */
+
+.table thead{
+
+    background:#f8fafc;
+
+}
+
+.table thead th{
+
+    padding:18px 20px;
+
+    border:none;
+
+    border-bottom:2px solid var(--border-color);
+
+    color:var(--text-light);
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+}
+
+/* ---------- Body ---------- */
+
+.table tbody td{
+
+    padding:16px 20px;
+
+    vertical-align:middle;
+
+    border-color:#eef2f7;
+
+    color:var(--text-dark);
+
+    transition:var(--transition);
+
+}
+
+/* ---------- Hover ---------- */
+
+.table tbody tr{
+
+    transition:var(--transition);
+
+}
+
+.table tbody tr:hover{
+
+    background:#f8fbff;
+
+}
+
+/* ---------- Zebra ---------- */
+
+.table tbody tr:nth-child(even){
+
+    background:#fcfcfd;
+
+}
+
+/* ---------- Last Row ---------- */
+
+.table tbody tr:last-child td{
+
+    border-bottom:none;
+
+}
+
+/* ---------- Action Column ---------- */
+
+.table-actions{
+
+    display:flex;
+
+    gap:8px;
+
+    align-items:center;
+
+}
+
+/* ---------- Small Buttons ---------- */
+
+.table-actions .btn{
+
+    width:38px;
+
+    height:38px;
+
+    padding:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:10px;
+
+}
+
+/* ---------- Badge ---------- */
+
+.badge{
+
+    padding:7px 12px;
+
+    border-radius:50px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+/* ---------- Status ---------- */
+
+.badge-pending{
+
+    background:#fff7ed;
+
+    color:#c2410c;
+
+}
+
+.badge-in_progress{
+
+    background:#eff6ff;
+
+    color:#2563eb;
+
+}
+
+.badge-completed{
+
+    background:#ecfdf5;
+
+    color:#16a34a;
+
+}
+
+/* ---------- Resource ---------- */
+
+.badge-pdf{
+
+    background:#fee2e2;
+
+    color:#dc2626;
+
+}
+
+.badge-youtube{
+
+    background:#fef2f2;
+
+    color:#b91c1c;
+
+}
+
+.badge-github{
+
+    background:#f3f4f6;
+
+    color:#111827;
+
+}
+
+.badge-other{
+
+    background:#f1f5f9;
+
+    color:#475569;
+
+}
+
+/* ---------- Empty Table ---------- */
+
+.empty-table{
+
+    text-align:center;
+
+    padding:50px 20px;
+
+    color:var(--text-light);
+
+}
+
+.empty-table i{
+
+    font-size:48px;
+
+    margin-bottom:15px;
+
+    color:#cbd5e1;
+
+}
+
+/* ---------- Search Header ---------- */
+
+.table-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px;
+
+    border-bottom:1px solid var(--border-color);
+
+    background:#ffffff;
+
+}
+
+.table-title{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:var(--text-dark);
+
+}
+
+/* ---------- Search Box ---------- */
+
+.table-search{
+
+    width:300px;
+
+}
+
+/* ---------- Pagination ---------- */
+
+.pagination{
+
+    margin-top:20px;
+
+}
+
+.page-link{
+
+    border-radius:10px;
+
+    margin:0 4px;
+
+    color:var(--primary-color);
+
+    border:1px solid var(--border-color);
+
+}
+
+.page-link:hover{
+
+    background:var(--primary-color);
+
+    color:#fff;
+
+}
+
+.page-item.active .page-link{
+
+    background:var(--primary-color);
+
+    border-color:var(--primary-color);
+
+}
+
+/* ---------- Responsive ---------- */
+
+.table-responsive{
+
+    border-radius:18px;
+
+}

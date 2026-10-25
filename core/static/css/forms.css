@@ -1,0 +1,319 @@
+/* ==========================================
+   Forms
+   Smart Study Planner
+   ========================================== */
+
+/* ---------- Form Container ---------- */
+
+.form-container{
+    background:#ffffff;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    border:1px solid var(--border-color);
+    animation:fadeUp .5s ease;
+}
+
+/* ---------- Form Title ---------- */
+
+.form-title{
+    font-size:28px;
+    font-weight:700;
+    color:var(--text-dark);
+    margin-bottom:8px;
+}
+
+.form-subtitle{
+    color:var(--text-light);
+    margin-bottom:30px;
+}
+
+/* ---------- Label ---------- */
+
+.form-label{
+    font-weight:600;
+    color:var(--text-dark);
+    margin-bottom:8px;
+    font-size:14px;
+}
+
+/* ---------- Input ---------- */
+
+.form-control,
+.form-select{
+
+    border:1.5px solid var(--border-color);
+
+    border-radius:12px;
+
+    padding:12px 15px;
+
+    min-height:50px;
+
+    font-size:15px;
+
+    background:#fff;
+
+    transition:all .3s ease;
+
+    box-shadow:none;
+
+}
+
+/* ---------- Focus ---------- */
+
+.form-control:focus,
+.form-select:focus{
+
+    border-color:var(--primary-color);
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.12);
+
+}
+
+/* ---------- Textarea ---------- */
+
+textarea.form-control{
+
+    min-height:140px;
+
+    resize:vertical;
+
+}
+
+/* ---------- Placeholder ---------- */
+
+.form-control::placeholder{
+
+    color:#94a3b8;
+
+}
+
+/* ---------- Input Group ---------- */
+
+.input-group-text{
+
+    border-radius:12px 0 0 12px;
+
+    background:#f8fafc;
+
+    border:1px solid var(--border-color);
+
+}
+
+/* ---------- Checkbox ---------- */
+
+.form-check-input{
+
+    width:18px;
+    height:18px;
+
+    cursor:pointer;
+
+}
+
+.form-check-input:checked{
+
+    background:var(--primary-color);
+    border-color:var(--primary-color);
+
+}
+
+.form-check-label{
+
+    margin-left:6px;
+    cursor:pointer;
+
+}
+
+/* ---------- File Upload ---------- */
+
+input[type="file"]{
+
+    border:2px dashed var(--border-color);
+
+    border-radius:12px;
+
+    padding:12px;
+
+    background:#f8fafc;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+input[type="file"]:hover{
+
+    border-color:var(--primary-color);
+
+    background:#eff6ff;
+
+}
+
+/* ---------- Error ---------- */
+
+.errorlist{
+
+    list-style:none;
+
+    margin-top:6px;
+
+    padding:0;
+
+}
+
+.errorlist li{
+
+    color:var(--danger-color);
+
+    font-size:13px;
+
+}
+
+/* ---------- Help Text ---------- */
+
+.helptext{
+
+    color:var(--text-light);
+
+    font-size:13px;
+
+}
+
+/* ---------- Form Footer ---------- */
+
+.form-footer{
+
+    margin-top:30px;
+
+    padding-top:20px;
+
+    border-top:1px solid var(--border-color);
+
+}
+
+/* ---------- Search Box ---------- */
+
+.search-box{
+
+    position:relative;
+
+}
+
+.search-box i{
+
+    position:absolute;
+
+    left:16px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:var(--text-light);
+
+}
+
+.search-box input{
+
+    padding-left:45px;
+
+}
+
+/* ---------- Floating Effect ---------- */
+
+.form-control:hover,
+.form-select:hover{
+
+    border-color:var(--primary-color);
+
+}
+
+/* ---------- Read Only ---------- */
+
+.form-control:disabled{
+
+    background:#f1f5f9;
+
+    cursor:not-allowed;
+
+}
+
+/* ---------- Login/Register Card ---------- */
+
+.auth-card{
+
+    width:100%;
+
+    max-width:450px;
+
+    margin:50px auto;
+
+    background:#fff;
+
+    border-radius:24px;
+
+    padding:35px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+/* ---------- Divider ---------- */
+
+.form-divider{
+
+    display:flex;
+
+    align-items:center;
+
+    margin:25px 0;
+
+}
+
+.form-divider::before,
+.form-divider::after{
+
+    content:"";
+
+    flex:1;
+
+    height:1px;
+
+    background:var(--border-color);
+
+}
+
+.form-divider span{
+
+    margin:0 15px;
+
+    color:var(--text-light);
+
+    font-size:13px;
+
+}
+
+/* ---------- Animation ---------- */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
