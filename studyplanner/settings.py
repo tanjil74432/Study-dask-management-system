@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-20*yq&)%a_^36xa8)6%5-9%q)cyeux88bao%@0bzbbl9#(1-h0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "study-dask-management-system.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition
